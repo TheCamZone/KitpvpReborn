@@ -1,0 +1,16 @@
+main: me.TheCamZone.Engine.Main
+name: KitpvpReborn
+version: 0.0.1-SNAPSHOT
+description: KitpvpReborn
+api-version: 1.16
+author: TheCamZone
+softdepend: [Featherboard, MVdWPlaceholderAPI]
+
+commands:
+  kit:
+    usage: /<command>
+    aliases: [k]
+  setspawn:
+    usage: /<command>
+  spawn:
+    usage: /<command>
