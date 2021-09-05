@@ -7,6 +7,7 @@ import me.TheCamZone.Commands.Kit;
 import me.TheCamZone.Commands.KitTabCompleter;
 import me.TheCamZone.Commands.SetSpawn;
 import me.TheCamZone.Commands.Spawn;
+import me.TheCamZone.Events.OnEntityDamage;
 import me.TheCamZone.Events.OnInventoryClick;
 import me.TheCamZone.Events.OnItemSpawn;
 import me.TheCamZone.Events.OnPlayerDeath;
@@ -47,6 +48,7 @@ public class Main extends JavaPlugin {
 	private OnPlayerPickupItem onPlayerPickupItem = new OnPlayerPickupItem();
 	private OnPlayerMove onPlayerMove = new OnPlayerMove();
 	private OnPlayerInteract onPlayerInteract = new OnPlayerInteract();
+	private OnEntityDamage onEntityDamage = new OnEntityDamage();
 	
 	private PlayerManager playerManager = new PlayerManager();
 	private KitHandler kitHandler = new KitHandler();
@@ -89,6 +91,7 @@ public class Main extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(onPlayerPickupItem, this);
 		getServer().getPluginManager().registerEvents(onPlayerMove, this);
 		getServer().getPluginManager().registerEvents(onPlayerInteract, this);
+		getServer().getPluginManager().registerEvents(onEntityDamage, this);
 		
 		if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
 			new PAPIplaceholders(this).register();

@@ -4,6 +4,10 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 
 public interface Kit {
+	
+	Boolean enabled = true;
+	Boolean free = false;
+	
 	public String getName();
 	public String getPermission();
 	public Boolean enabled();

@@ -42,10 +42,10 @@ public class OnPlayerDeath implements Listener {
 	    }, 2L);
 		
 		if(killer == null) {
-			e.setDeathMessage(Main.plugin.getCfg().getPrefix() + Main.plugin.getPlayerManager().getDeathMessage(player, deathCause));
+			e.setDeathMessage(Main.plugin.getCfg().getPrefix() + Main.plugin.getPlayerManager().getDeathMessage(player, deathCause.toString()));
 			Main.plugin.getPlayerManager().get(player).addDeath();
 		} else {
-			e.setDeathMessage(Main.plugin.getCfg().getPrefix() + Main.plugin.getPlayerManager().getDeathMessage(killer, player, deathCause));
+			e.setDeathMessage(Main.plugin.getCfg().getPrefix() + Main.plugin.getPlayerManager().getDeathMessage(killer, player, deathCause.toString()));
 			Main.plugin.getPlayerManager().get(player).addDeath();
 			Main.plugin.getPlayerManager().get(killer).addKill();
 		}

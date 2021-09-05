@@ -11,7 +11,6 @@ import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
@@ -68,115 +67,117 @@ public class PlayerManager implements Listener {
 //		return onlinePlayerClasses.get(player.getUniqueId());
 //	}
 	
-	public String getDeathMessage(Player dead, DamageCause deathCause) {
+	public String getDeathMessage(Player dead, String deathCause) {
 		String cause;
 		
 		switch (deathCause) {
-			case BLOCK_EXPLOSION:
+			case "BLOCK_EXPLOSION":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] exploded."; break;
-			case CONTACT:
+			case "CONTACT":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] was pricked to death."; break;
-			case DRAGON_BREATH:
+			case "DRAGON_BREATH":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] roasted in dragon breath."; break;
-			case DROWNING:
+			case "DROWNING":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] drowned."; break;
-			case ENTITY_EXPLOSION:
+			case "ENTITY_EXPLOSION":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] exploded."; break;
-			case ENTITY_SWEEP_ATTACK:
+			case "ENTITY_SWEEP_ATTACK":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] was collateralled."; break;
-			case FALL:
+			case "FALL":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] fell off a cliff."; break;
-			case FALLING_BLOCK:
+			case "FALLING_BLOCK":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] was smushed by an anvil."; break;
-			case FIRE:
+			case "FIRE":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] was incinerated."; break;
-			case FIRE_TICK:
+			case "FIRE_TICK":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] was burnt to a crisp."; break;
-			case FLY_INTO_WALL:
+			case "FLY_INTO_WALL":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] faceplanted into a wall."; break;
-			case HOT_FLOOR:
+			case "HOT_FLOOR":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] tried walking on hot coals."; break;
-			case LAVA:
+			case "LAVA":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] fell in a lava hot-tub."; break;
-			case LIGHTNING:
+			case "LIGHTNING":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] was smited by Zeus."; break;
-			case MAGIC:
+			case "MAGIC":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] was cursed."; break;
-			case POISON:
+			case "POISON":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] was poisoned to death."; break;
-			case PROJECTILE:
+			case "PROJECTILE":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] was shot to death."; break;
-			case STARVATION:
+			case "STARVATION":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] starved to death."; break;
-			case SUFFOCATION:
+			case "SUFFOCATION":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] sufficated."; break;
-			case SUICIDE:
+			case "SUICIDE":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] committed suicide."; break;
-			case THORNS:
+			case "THORNS":
 				cause = dead.getName() + " [" + get(dead).getKit() + "]'s attack bounced off his target and they died from it."; break;
-			case VOID:
+			case "VOID":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] was banished to the nether realm."; break;
-			case WITHER:
+			case "WITHER":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] withered away."; break;
 			default: 
-				cause = dead.getName() + " [" + get(dead).getKit() + "] died."; break;
+				cause = null;
+				//cause = dead.getName() + " [" + get(dead).getKit() + "] died."; break;
 		}
 		
 		return cause;
 	}
 	
-	public String getDeathMessage(Player killer, Player dead, DamageCause deathCause) {
+	public String getDeathMessage(Player killer, Player dead, String deathCause) {
 		String cause;
 		
 		switch (deathCause) {
-			case BLOCK_EXPLOSION:
+			case "BLOCK_EXPLOSION":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] exploded while fighting " + killer.getName() + " [" + get(killer).getKit() + "]"; break;
-			case CONTACT:
+			case "CONTACT":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] was pricked to death while fighting " + killer.getName() + " [" + get(killer).getKit() + "]"; break;
-			case DRAGON_BREATH:
+			case "DRAGON_BREATH":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] roasted in dragon breath while fighting " + killer.getName() + " [" + get(killer).getKit() + "]"; break;
-			case DROWNING:
+			case "DROWNING":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] drowned while fighting " + killer.getName() + " [" + get(killer).getKit() + "]"; break;
-			case ENTITY_EXPLOSION:
+			case "ENTITY_EXPLOSION":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] exploded by " + killer.getName() + " [" + get(killer).getKit() + "]"; break;
-			case ENTITY_SWEEP_ATTACK:
+			case "ENTITY_SWEEP_ATTACK":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] was collateralled by " + killer.getName() + " [" + get(killer).getKit() + "]"; break;
-			case FALL:
+			case "FALL":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] fell off a cliff while fighting " + killer.getName() + " [" + get(killer).getKit() + "]"; break;
-			case FALLING_BLOCK:
+			case "FALLING_BLOCK":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] was smushed by an anvil while fighting " + killer.getName() + " [" + get(killer).getKit() + "]"; break;
-			case FIRE:
+			case "FIRE":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] was incinerated while fighting " + killer.getName() + " [" + get(killer).getKit() + "]"; break;
-			case FIRE_TICK:
+			case "FIRE_TICK":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] was burnt to a crisp while fighting " + killer.getName() + " [" + get(killer).getKit() + "]"; break;
-			case FLY_INTO_WALL:
+			case "FLY_INTO_WALL":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] faceplanted into a wall while fighting " + killer.getName() + " [" + get(killer).getKit() + "]"; break;
-			case HOT_FLOOR:
+			case "HOT_FLOOR":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] tried walking on hot coals while fighting " + killer.getName() + " [" + get(killer).getKit() + "]"; break;
-			case LAVA:
+			case "LAVA":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] fell in a lava hot-tub while fighting " + killer.getName() + " [" + get(killer).getKit() + "]"; break;
-			case LIGHTNING:
+			case "LIGHTNING":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] was smited by Zeus while fighting " + killer.getName() + " [" + get(killer).getKit() + "]"; break;
-			case MAGIC:
+			case "MAGIC":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] was cursed by " + killer.getName() + " [" + get(killer).getKit() + "]"; break;
-			case POISON:
+			case "POISON":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] was poisoned to death by " + killer.getName() + " [" + get(killer).getKit() + "]"; break;
-			case PROJECTILE:
+			case "PROJECTILE":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] was shot to death by " + killer.getName() + " [" + get(killer).getKit() + "]"; break;
-			case STARVATION:
+			case "STARVATION":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] starved to death while fighting " + killer.getName() + " [" + get(killer).getKit() + "]"; break;
-			case SUFFOCATION:
+			case "SUFFOCATION":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] sufficated while fighting " + killer.getName() + " [" + get(killer).getKit() + "]"; break;
-			case SUICIDE:
+			case "SUICIDE":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] committed suicide to get away from " + killer.getName() + " [" + get(killer).getKit() + "]"; break;
-			case THORNS:
+			case "THORNS":
 				cause = dead.getName() + " [" + get(dead).getKit() + "]'s attack bounced off " + killer.getName() + " [" + get(dead).getKit() + "] and he died from it."; break;
-			case VOID:
+			case "VOID":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] was banished to the nether realm by " + killer.getName() + " [" + get(killer).getKit() + "]"; break;
-			case WITHER:
+			case "WITHER":
 				cause = dead.getName() + " [" + get(dead).getKit() + "] withered away while fighting " + killer.getName() + " [" + get(killer).getKit() + "]"; break;
 			default: 
-				cause = dead.getName() + " [" + get(dead).getKit() + "] died while fighting " + killer.getName() + " [" + get(killer).getKit() + "]"; break;
+				cause = null;
+				//cause = dead.getName() + " [" + get(dead).getKit() + "] died while fighting " + killer.getName() + " [" + get(killer).getKit() + "]"; break;
 		}
 		
 		return cause;

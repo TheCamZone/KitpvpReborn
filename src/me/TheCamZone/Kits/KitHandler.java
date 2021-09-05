@@ -19,6 +19,7 @@ public class KitHandler {
 	private Tank tank = new Tank();
 	private Strafe strafe = new Strafe();
 	private Berserker berserker = new Berserker();
+	private Stomper stomper = new Stomper();
 	
 	public void load() { 
 		kits.put("pvp", pvp);
@@ -26,6 +27,7 @@ public class KitHandler {
 		kits.put("tank", tank);
 		kits.put("strafe", strafe);
 		kits.put("berserker", berserker);
+		kits.put("stomper", stomper);
 	}
 	
 	public HashMap<String, Kit> getKits() {
