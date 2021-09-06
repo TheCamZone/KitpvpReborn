@@ -4,6 +4,7 @@
 /Users/Cam/eclipse-workspace/KitpvpReborn/src/me/TheCamZone/Kits/Kit.java
 /Users/Cam/eclipse-workspace/KitpvpReborn/src/me/TheCamZone/Events/OnPlayerDeath.java
 /Users/Cam/eclipse-workspace/KitpvpReborn/src/me/TheCamZone/Events/OnItemSpawn.java
+/Users/Cam/eclipse-workspace/KitpvpReborn/src/me/TheCamZone/Commands/Kitpvp.java
 /Users/Cam/eclipse-workspace/KitpvpReborn/src/me/TheCamZone/Handlers/CooldownHandler.java
 /Users/Cam/eclipse-workspace/KitpvpReborn/src/me/TheCamZone/Files/ConfigFile.java
 /Users/Cam/eclipse-workspace/KitpvpReborn/src/me/TheCamZone/Events/OnPlayerInteract.java
@@ -22,6 +23,7 @@
 /Users/Cam/eclipse-workspace/KitpvpReborn/src/me/TheCamZone/Placeholders/PAPIplaceholders.java
 /Users/Cam/eclipse-workspace/KitpvpReborn/src/me/TheCamZone/Handlers/PlayerManager.java
 /Users/Cam/eclipse-workspace/KitpvpReborn/src/me/TheCamZone/Commands/SetSpawn.java
+/Users/Cam/eclipse-workspace/KitpvpReborn/src/me/TheCamZone/Handlers/RegionHandler.java
 /Users/Cam/eclipse-workspace/KitpvpReborn/src/me/TheCamZone/Kits/Stomper.java
 /Users/Cam/eclipse-workspace/KitpvpReborn/src/me/TheCamZone/Extras/SpongeLauncher.java
 /Users/Cam/eclipse-workspace/KitpvpReborn/src/me/TheCamZone/Kits/Archer.java

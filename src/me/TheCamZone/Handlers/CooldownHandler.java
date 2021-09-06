@@ -13,6 +13,7 @@ import me.TheCamZone.Engine.Main;
 public class CooldownHandler {
 
 	HashMap<UUID, Integer> cooldowns = new HashMap<UUID, Integer> ();
+	HashMap<UUID, UUID> lifeIds = new HashMap<UUID, UUID> ();
 	
 	public void start() {
 		new BukkitRunnable()
@@ -32,8 +33,9 @@ public class CooldownHandler {
 					if(timeleft <= 0) {
 						cooldowns.remove(uuid);
 						
-						if(Main.plugin.getPlayerManager().get(Bukkit.getPlayer(uuid)).getKit() != "None") {
+						if(Main.plugin.getPlayerManager().get(Bukkit.getPlayer(uuid)).getLifeId() == lifeIds.get(uuid)) {
 							Bukkit.getPlayer(uuid).sendMessage(Main.plugin.getCfg().getPrefix() + ChatColor.GREEN + "Ability ready!");
+							lifeIds.remove(uuid);
 						}
 						
 						return;
@@ -49,6 +51,7 @@ public class CooldownHandler {
 	public void setCooldown(Player player, Integer delay) {
 		if(delay == null) {
 			cooldowns.put(player.getUniqueId(), 0);
+			lifeIds.put(player.getUniqueId(), Main.plugin.getPlayerManager().get(player).getLifeId());
 		}
 		
 		cooldowns.put(player.getUniqueId(), delay);

@@ -1,5 +1,7 @@
 package me.TheCamZone.Engine;
 
+import java.util.Arrays;
+
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -25,6 +27,7 @@ import me.TheCamZone.Files.Locations;
 import me.TheCamZone.Files.LocationsFile;
 import me.TheCamZone.Handlers.CooldownHandler;
 import me.TheCamZone.Handlers.PlayerManager;
+import me.TheCamZone.Handlers.RegionHandler;
 import me.TheCamZone.Kits.KitHandler;
 import me.TheCamZone.Placeholders.PAPIplaceholders;
 
@@ -53,6 +56,7 @@ public class Main extends JavaPlugin {
 	private PlayerManager playerManager = new PlayerManager();
 	private KitHandler kitHandler = new KitHandler();
 	private CooldownHandler cooldownHandler = new CooldownHandler();
+	private RegionHandler regionHandler = new RegionHandler();
 	
 	private Locations locations = new Locations();
 	private Config config = new Config();
@@ -96,6 +100,11 @@ public class Main extends JavaPlugin {
 		if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
 			new PAPIplaceholders(this).register();
 		}
+		
+		if(ConfigFile.get().getStringList("regions.protectedRegions").isEmpty()) {
+			ConfigFile.get().set("regions.protectedRegions", Arrays.asList("spawn"));
+			ConfigFile.save();
+		}
 	}
 	
 	public PlayerManager getPlayerManager() {
@@ -116,6 +125,10 @@ public class Main extends JavaPlugin {
 	
 	public CooldownHandler getCooldownHandler() {
 		return cooldownHandler;
+	}
+
+	public RegionHandler getRegionHandler() {
+		return regionHandler;
 	}
 	
 }

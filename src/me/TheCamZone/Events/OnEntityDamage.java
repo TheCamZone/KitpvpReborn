@@ -35,6 +35,8 @@ public class OnEntityDamage implements Listener {
 						
 						if(damage >= otherPlayer.getHealth()) {
 							Bukkit.broadcastMessage(Main.plugin.getCfg().getPrefix() + player.getName() + " [Stomper] stomped " + otherPlayer.getName() + " [" + Main.plugin.getPlayerManager().get(otherPlayer).getKit() + "]");
+							Main.plugin.getPlayerManager().get(player).addKill();
+							Main.plugin.getPlayerManager().get(otherPlayer).addDeath();
 						}
 					} else if(entity instanceof Damageable) {
 						Damageable otherEntity = (Damageable) entity;

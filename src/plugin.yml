@@ -4,7 +4,7 @@ version: 0.0.1-SNAPSHOT
 description: KitpvpReborn
 api-version: 1.16
 author: TheCamZone
-softdepend: [Featherboard, MVdWPlaceholderAPI]
+softdepend: [Featherboard, MVdWPlaceholderAPI, WorldGuard, WorldEdit]
 
 commands:
   kit:

@@ -22,6 +22,7 @@ public class Spawn implements CommandExecutor {
 			sender.sendMessage(Main.plugin.getCfg().getPrefix() + ChatColor.RED + "No spawn has been set up.");
 		} else {
 			player.teleport(Main.plugin.getLocations().getSpawn());
+			Main.plugin.getPlayerManager().get(player).refreshLifeId();
 		}
 		return true;
 	}

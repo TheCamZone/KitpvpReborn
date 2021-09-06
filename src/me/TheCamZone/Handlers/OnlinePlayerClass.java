@@ -18,6 +18,8 @@ public class OnlinePlayerClass {
 	private Integer deaths;
 	private Integer killstreak;
 	
+	private UUID lifeId;
+	
 	public OnlinePlayerClass(Player player) {
 		uuid = player.getUniqueId();
 		lastName = player.getName();
@@ -44,6 +46,8 @@ public class OnlinePlayerClass {
 		
 		kills = DataFile.get().getInt(uuid + ".kills");
 		deaths = DataFile.get().getInt(uuid + ".deaths");
+		
+		refreshLifeId();
 	}
 
 	public void save() {
@@ -51,6 +55,16 @@ public class OnlinePlayerClass {
 		DataFile.get().set(uuid + ".kills", kills);
 		DataFile.get().set(uuid + ".deaths", deaths);
 		DataFile.save();
+	}
+	
+	public UUID getLifeId() {
+		return lifeId;
+	}
+	
+	public UUID refreshLifeId() {
+		UUID uuid = UUID.randomUUID();
+		lifeId = uuid;
+		return lifeId;
 	}
 	
 	public String getLastName() {
