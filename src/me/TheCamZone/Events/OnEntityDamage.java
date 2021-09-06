@@ -27,20 +27,24 @@ public class OnEntityDamage implements Listener {
 		
 		if(Main.plugin.getPlayerManager().get(player).getKit().equalsIgnoreCase("Stomper")) {
 			if(damageCause == DamageCause.FALL) {
-				List<Entity> entities = player.getNearbyEntities(1.5, 1, 1.5);
-				for(Entity entity : entities) {
-					if(entity instanceof Player) {
-						Player otherPlayer = (Player) entity;
-						otherPlayer.damage(e.getDamage());
-						
-						if(damage >= otherPlayer.getHealth()) {
-							Bukkit.broadcastMessage(Main.plugin.getCfg().getPrefix() + player.getName() + " [Stomper] stomped " + otherPlayer.getName() + " [" + Main.plugin.getPlayerManager().get(otherPlayer).getKit() + "]");
-							Main.plugin.getPlayerManager().get(player).addKill();
-							Main.plugin.getPlayerManager().get(otherPlayer).addDeath();
+				if(!Main.plugin.getRegionHandler().inProtectedRegion(player)) {
+					List<Entity> entities = player.getNearbyEntities(1.5, 1, 1.5);
+					for(Entity entity : entities) {
+						if(entity instanceof Player) {
+							Player otherPlayer = (Player) entity;
+							if(!Main.plugin.getRegionHandler().inProtectedRegion(otherPlayer)) {
+								if(damage >= otherPlayer.getHealth()) {
+									Bukkit.broadcastMessage(Main.plugin.getCfg().getPrefix() + player.getName() + " [Stomper] stomped " + otherPlayer.getName() + " [" + Main.plugin.getPlayerManager().get(otherPlayer).getKit() + "]");
+									Main.plugin.getPlayerManager().get(player).addKill();
+									Main.plugin.getPlayerManager().get(otherPlayer).addDeath();
+								} else {
+									otherPlayer.damage(damage);
+								}
+							}
+						} else if(entity instanceof Damageable) {
+							Damageable otherEntity = (Damageable) entity;
+							otherEntity.damage(e.getDamage());
 						}
-					} else if(entity instanceof Damageable) {
-						Damageable otherEntity = (Damageable) entity;
-						otherEntity.damage(e.getDamage());
 					}
 				}
 				
