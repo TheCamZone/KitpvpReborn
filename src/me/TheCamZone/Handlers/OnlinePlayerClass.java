@@ -19,6 +19,7 @@ public class OnlinePlayerClass {
 	private Integer killstreak;
 	
 	private UUID lifeId;
+	private Boolean fallDamage = true;
 	
 	public OnlinePlayerClass(Player player) {
 		uuid = player.getUniqueId();
@@ -69,6 +70,14 @@ public class OnlinePlayerClass {
 	
 	public String getLastName() {
 		return lastName;
+	}
+	
+	public void setFallDamage(Boolean bool) {
+		fallDamage = bool;
+	}
+	
+	public Boolean getFallDamage() {
+		return fallDamage;
 	}
 	
 	public void setKitName(String name) {

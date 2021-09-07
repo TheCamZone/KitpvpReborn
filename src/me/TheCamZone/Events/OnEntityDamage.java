@@ -25,6 +25,12 @@ public class OnEntityDamage implements Listener {
 		DamageCause damageCause = e.getCause();
 		Double damage = e.getDamage();
 		
+		if(damageCause == DamageCause.FALL) {
+			if(!Main.plugin.getPlayerManager().get(player).getFallDamage()) {
+				e.setCancelled(true);
+			}
+		}
+		
 		if(Main.plugin.getPlayerManager().get(player).getKit().equalsIgnoreCase("Stomper")) {
 			if(damageCause == DamageCause.FALL) {
 				if(!Main.plugin.getRegionHandler().inProtectedRegion(player)) {
